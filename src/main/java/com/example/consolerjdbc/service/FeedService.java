@@ -25,8 +25,8 @@ public class FeedService {
         return feedRepository.save(feed);
     }
 
-    public void removeFeed(int id) {
-        feedRepository.deleteById(id);
+    public Feed removeFeed(int id) {
+        return feedRepository.deleteById(id);
     }
 
 }

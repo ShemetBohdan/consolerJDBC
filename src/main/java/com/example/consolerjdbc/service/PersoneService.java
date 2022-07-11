@@ -24,7 +24,7 @@ public class PersoneService {
         return personeRepository.save(persone);
     }
 
-    public void removePersone(int id){
-        personeRepository.deleteById(id);
+    public Persone removePersone(int id){
+        return personeRepository.deleteById(id);
     }
 }
