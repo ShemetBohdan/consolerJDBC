@@ -37,8 +37,8 @@ public class AnimalsService {
         return animalsRepository.save(animals);
     }
 
-    public void removeAnimals(int id) {
-        animalsRepository.deleteById(id);
+    public Animals removeAnimals(int id) {
+        return animalsRepository.deleteById(id);
     }
 
 }

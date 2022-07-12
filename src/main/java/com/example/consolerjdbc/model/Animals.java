@@ -18,4 +18,5 @@ public class Animals {
     private String kind;
     private String breed;
     private int age;
+
 }

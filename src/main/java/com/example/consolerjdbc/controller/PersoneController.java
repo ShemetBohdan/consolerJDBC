@@ -40,13 +40,13 @@ public class PersoneController {
 
     @DeleteMapping(value = "/{id}")
     @ResponseStatus(HttpStatus.I_AM_A_TEAPOT)
-    public void deleteAnimals(@PathVariable Integer id) {
+    public Persone deleteAnimals(@PathVariable Integer id) {
         if (id == 0) {
             throw new ResponseStatusException(
                     HttpStatus.NOT_FOUND, "Not found");
         }
         System.out.println("removing persone whith id:" + id);
-        personeService.removePersone(id);
+        return this.personeService.removePersone(id);
     }
 
 }

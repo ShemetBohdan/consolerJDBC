@@ -38,13 +38,13 @@ public class FeedController {
 
     @DeleteMapping(value = "/{id}")
     @ResponseStatus(HttpStatus.I_AM_A_TEAPOT)
-    public void deleteFeed(@PathVariable Integer id) {
+    public Feed deleteFeed(@PathVariable Integer id) {
         if (id == 0) {
             throw new ResponseStatusException(
                     HttpStatus.NOT_FOUND, "Not found");
         }
         System.out.println("removing feed number whith id:" + id);
-       feedService.removeFeed(id);
+       return this.feedService.removeFeed(id);
     }
 
     @ExceptionHandler({NullPointerException.class})

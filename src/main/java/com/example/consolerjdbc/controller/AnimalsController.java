@@ -30,7 +30,7 @@ public class AnimalsController {
 
     @GetMapping( "persone/{name}")
     public Animals getAnimalsbyPersone(@PathVariable String name){
-        return animalsService.animalsByPersone(name);
+        return this.animalsService.animalsByPersone(name);
     }
 
     @GetMapping
@@ -50,12 +50,12 @@ public class AnimalsController {
 
     @DeleteMapping(value = "/{id}")
     @ResponseStatus(HttpStatus.I_AM_A_TEAPOT)
-    public void deleteAnimals(@PathVariable Integer id) {
+    public Animals deleteAnimals(@PathVariable Integer id) {
         if (id == 0) {
             throw new ResponseStatusException(
                     HttpStatus.NOT_FOUND, "Not found");
         }
         System.out.println("removing animals whith id:" + id);
-        animalsService.removeAnimals(id);
+        return this.animalsService.removeAnimals(id);
     }
 }
