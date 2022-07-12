@@ -3,7 +3,9 @@ package com.example.consolerjdbc.controller;
 import com.example.consolerjdbc.model.Persone;
 import com.example.consolerjdbc.service.PersoneService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -19,19 +21,20 @@ public class PersoneController {
     }
 
     @GetMapping( value = "/{id}")
-    public Persone getPersone(@PathVariable Integer id) {
+    @Cacheable(value = "personeId")
+    public @ResponseBody Persone getPersone(@PathVariable Integer id) {
         System.out.println(id);
-        return personeService.getPersone(id).orElseThrow(()-> new ResponseStatusException(
+        return this.personeService.getPersone(id).orElseThrow(()-> new ResponseStatusException(
                 HttpStatus.NOT_FOUND,"persone not found"));
     }
 
     @PostMapping( value = "/{update}")
-    public Persone updatePersone(@RequestBody Persone persone){;
+    public @ResponseBody Persone updatePersone(@RequestBody Persone persone){;
         return this.personeService.savePersone(persone);
     }
 
     @PutMapping( value = "/{add}")
-    public Persone savePersone(@RequestBody Persone persone){
+    public @ResponseBody Persone savePersone(@RequestBody Persone persone){
         return this.personeService.savePersone(persone);
     }
 

@@ -1,12 +1,14 @@
 package com.example.consolerjdbc.model;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.Generated;
+import lombok.*;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 
 @Data
 @Builder
+@Table
+@AllArgsConstructor
+@NoArgsConstructor
 public class Animals {
 
     @Id

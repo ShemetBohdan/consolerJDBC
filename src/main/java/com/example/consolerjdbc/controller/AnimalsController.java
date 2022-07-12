@@ -3,6 +3,7 @@ package com.example.consolerjdbc.controller;
 import com.example.consolerjdbc.model.Animals;
 import com.example.consolerjdbc.service.AnimalsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -20,6 +21,7 @@ public class AnimalsController {
     }
 
     @GetMapping( value = "/{id}", produces = "application/json")
+    @Cacheable(value = "animalsId")
     public Animals getAnimals(@PathVariable Integer id) {
         System.out.println(id);
         return animalsService.getAnimals(id).orElseThrow(()-> new ResponseStatusException(
